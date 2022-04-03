@@ -46,7 +46,11 @@ function QuickQuote() {
             <input type="number" name="Amount" />
           </label>
         </div>
-        <button onClick={() => setStatus("Start New Quote")}>{status}</button>
+        <div id="submission-button">
+          <button id="submission" onClick={() => setStatus("Start New Quote")}>
+            {status}
+          </button>
+        </div>
       </form>
     </>
   );

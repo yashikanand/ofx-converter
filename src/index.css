@@ -11,6 +11,12 @@ code {
     monospace;
 }
 
+input {
+  height: 4vh;
+  border: solid #ececec 1px;
+  border-radius: 5px;
+}
+
 #heading {
   color: #555555;
   margin: 0vw;
@@ -23,8 +29,7 @@ code {
 }
 
 #details {
-  border: 0.1vw solid #c5c5c5;
-  padding: 2vw;
+  border: 0.1vw solid #ececec;
 }
 
 #name {
@@ -33,10 +38,53 @@ code {
   justify-content: space-between;
 }
 
+#user-details,
+#currency-details,
+#submission-button {
+  padding: 2vw;
+}
+
 #name > label {
   width: 47%;
 }
 
 #name > label > input {
   width: 98%;
+}
+
+#user-details > label > input {
+  width: 99%;
+}
+
+#submission-button,
+#currency-details {
+  background-color: #f8f8f8;
+}
+
+#currency-details {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+#currency-details > label {
+  width: 47%;
+}
+
+#currency-details > label > input {
+  width: 98%;
+}
+
+#submission-button {
+  display: flex;
+  justify-content: center;
+}
+
+#submission {
+  background: #0178a2;
+  border: 0px solid;
+  color: #ffffff;
+  border-radius: 5vw;
+  font-size: 2vw;
+  padding: 1vw 5vw;
 }
