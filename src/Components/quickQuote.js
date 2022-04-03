@@ -9,38 +9,45 @@ function QuickQuote() {
           <div id="name">
             <label>
               First Name
+              <br />
               <input type="text" name="first-name" />
             </label>
             <label>
               Last Name
+              <br />
               <input type="text" name="last-name" />
             </label>
           </div>
           <label>
             Email
+            <br />
             <input type="email" name="email" />
           </label>
           <label>
             Telephone/Mobile
-            <input type="number" name="contact" />
+            <br />
+            <input type="tel" name="contact" />
           </label>
         </div>
         <div id="currency-details">
           <label>
             From Currency
-            <input type="number" name="from-currency" />
+            <br />
+            <input type="text" name="from-currency" />
           </label>
           <label>
             To Currency
-            <input type="number" name="to-currency" />
+            <br />
+            <input type="text" name="to-currency" />
           </label>
           <label>
             Amount
+            <br />
             <input type="number" name="Amount" />
           </label>
         </div>
+        <button onClick={() => setStatus("Start New Quote")}>{status}</button>
       </form>
-      <button onClick={() => setStatus("Start New Quote")}>{status}</button>
     </>
   );
 }
