@@ -97,3 +97,16 @@ label {
 .required {
   color: red;
 }
+
+.PhoneInput {
+  justify-content: space-around;
+}
+
+.PhoneInput > input {
+  width: 94%;
+}
+
+.PhoneInputInput {
+  flex: initial !important;
+  min-width: initial;
+}
