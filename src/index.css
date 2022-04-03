@@ -17,6 +17,11 @@ input {
   border-radius: 5px;
 }
 
+label {
+  display: block;
+  margin-top: 1%;
+}
+
 #heading {
   color: #555555;
   margin: 0vw;
@@ -41,11 +46,11 @@ input {
 #user-details,
 #currency-details,
 #submission-button {
-  padding: 2vw;
+  padding: 1vw 2vw;
 }
 
 #name > label {
-  width: 47%;
+  width: 48%;
 }
 
 #name > label > input {
@@ -68,7 +73,7 @@ input {
 }
 
 #currency-details > label {
-  width: 47%;
+  width: 48%;
 }
 
 #currency-details > label > input {
