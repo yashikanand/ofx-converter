@@ -85,6 +85,10 @@ input {
   border: 0px solid;
   color: #ffffff;
   border-radius: 5vw;
-  font-size: 2vw;
+  font-size: 1vw;
   padding: 1vw 5vw;
+}
+
+.required {
+  color: red;
 }
