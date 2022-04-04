@@ -1,8 +1,8 @@
 let customerRate = 0;
 let senderAmount = 0;
 let receiverAmount = 0;
-let senderCurrency = "AUD";
-let receiverCurrency = "USD";
+let senderCurrency;
+let receiverCurrency;
 
 function Output() {
   return (

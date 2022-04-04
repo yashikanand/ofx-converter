@@ -1,15 +1,25 @@
 import React, { useState } from "react";
 import "react-phone-number-input/style.css";
 import PhoneInput from "react-phone-number-input";
-import Output from "./quickQuoteOut";
 import DataAccess from "./dataAccess";
 
 function QuickQuote() {
   const [value, setValue] = useState();
+  const [senderCurrency, setSenderCurrency] = useState("");
+  const [receiverCurrency, setReceiverCurrency] = useState("");
+  const [senderAmount, setSenderAmount] = useState("");
+
+  const submit = (e) => {
+    e.preventDefault();
+    setValue();
+    setSenderCurrency("");
+    setReceiverCurrency("");
+    setSenderAmount("");
+  };
   return (
     <>
       <DataAccess />
-      <form id="details" onSubmit={() => Output()}>
+      <form id="details" onSubmit={submit}>
         <div id="user-details">
           <div id="name">
             <label>
@@ -19,7 +29,7 @@ function QuickQuote() {
               <input
                 type="text"
                 name="first-name"
-                required="true"
+                required
                 placeholder="First Name"
               />
             </label>
@@ -30,7 +40,7 @@ function QuickQuote() {
               <input
                 type="text"
                 name="last-name"
-                required="true"
+                required
                 placeholder="Last Name"
               />
             </label>
@@ -47,27 +57,49 @@ function QuickQuote() {
           </label>
         </div>
         <div id="currency-details">
-          <label>
+          <label htmlFor="from-currency">
             From Currency
             <span className="required"> *</span>
             <br />
-            <input type="text" name="from-currency" required="true" />
+            <select
+              value={senderCurrency}
+              onChange={(e) => setSenderCurrency(e.target.value)}
+              id="from-currency"
+              name="from-currency"
+              required
+            >
+              <option value="">Please select</option>
+              <option value="USD">United States Dollar(USD)</option>
+              <option value="AUD">Australian Dollar(AUD)</option>
+            </select>
           </label>
-          <label>
+          <label htmlFor="to-currency">
             To Currency
             <span className="required"> *</span>
             <br />
-            <input type="text" name="to-currency" required="true" />
+            <select
+              value={receiverCurrency}
+              onChange={(e) => setReceiverCurrency(e.target.value)}
+              id="to-currency"
+              name="to-currency"
+              required
+            >
+              <option value="">Please select</option>
+              <option value="USD">United States Dollar(USD)</option>
+              <option value="AUD">Australian Dollar(AUD)</option>
+            </select>
           </label>
           <label>
             Amount
             <span className="required"> *</span>
             <br />
             <input
+              value={senderAmount}
+              onChange={(e) => setSenderAmount(e.target.value)}
               type="number"
               step="0.01"
               name="Amount"
-              required="true"
+              required
               placeholder="25000.00"
             />
           </label>

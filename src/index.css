@@ -6,6 +6,10 @@ body {
   margin: 3vw;
 }
 
+button {
+  cursor: pointer;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
@@ -20,6 +24,10 @@ input {
 label {
   display: block;
   margin-top: 1%;
+  color: #555555;
+}
+
+select {
   color: #555555;
 }
 
@@ -77,8 +85,11 @@ label {
   width: 48%;
 }
 
-#currency-details > label > input {
+#currency-details > label > select {
   width: 98%;
+  height: 4vh;
+  border: solid #ececec 1px;
+  border-radius: 5px;
 }
 
 #submission-button {

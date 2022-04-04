@@ -9,7 +9,7 @@ function DataAccess() {
     fetch(api)
       .then((res) => res.json())
       .then(setData)
-      .catch(console.error);
+      .catch(alert("API Data Not Found"));
   }, []);
 
   if (data) {
