@@ -1,6 +1,7 @@
 import "./App.css";
 import React from "react";
 import QuickQuote from "./Components/quickQuote";
+import Output from "./Components/quickQuoteOut";
 
 function Heading() {
   return (
@@ -16,6 +17,7 @@ function App() {
     <>
       <Heading />
       <QuickQuote />
+      <Output />
     </>
   );
 }
