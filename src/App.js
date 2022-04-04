@@ -17,7 +17,6 @@ function App() {
     <>
       <Heading />
       <QuickQuote />
-      <Output />
     </>
   );
 }

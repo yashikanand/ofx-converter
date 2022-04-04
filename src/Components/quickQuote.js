@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import "react-phone-number-input/style.css";
 import PhoneInput from "react-phone-number-input";
+import Output from "./quickQuoteOut";
+import DataAccess from "./dataAccess";
 
 function QuickQuote() {
   const [value, setValue] = useState();
   return (
     <>
-      <form id="details">
+      <DataAccess />
+      <form id="details" onSubmit={() => Output()}>
         <div id="user-details">
           <div id="name">
             <label>
