@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "react-phone-number-input/style.css";
 import PhoneInput from "react-phone-number-input";
 import DataAccess from "./dataAccess";
+import Output from "./quickQuoteOutput";
 
 function QuickQuote() {
   const [value, setValue] = useState();
@@ -11,6 +12,12 @@ function QuickQuote() {
 
   const submit = (e) => {
     e.preventDefault();
+
+    <Output
+      senderCur={senderCurrency}
+      receiverCur={receiverCurrency}
+      senderAmt={senderAmount}
+    />;
     setValue();
     setSenderCurrency("");
     setReceiverCurrency("");
@@ -18,7 +25,7 @@ function QuickQuote() {
   };
   return (
     <>
-      <DataAccess />
+      {/* <DataAccess /> */}
       <form id="details" onSubmit={submit}>
         <div id="user-details">
           <div id="name">

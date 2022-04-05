@@ -1,10 +1,20 @@
-let customerRate = 0;
-let senderAmount = 0;
-let receiverAmount = 0;
+import DataAccess from "./dataAccess";
+
+let customerRate;
+let senderAmount;
+let receiverAmount;
 let senderCurrency;
 let receiverCurrency;
 
-function Output() {
+function Output(props) {
+  const setValues = (props) => {
+    /* customerRate = <DataAccess />; */
+    senderAmount = props.senderAmt;
+    receiverAmount = props.senderAmt * customerRate;
+    senderCurrency = props.senderCurr;
+    receiverCurrency = props.receiverCurr;
+  };
+  document.ready(setValues);
   return (
     <div id="output">
       <div id="customer-rate-details">
