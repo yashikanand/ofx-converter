@@ -6,7 +6,10 @@ import PhoneInput from "react-phone-number-input";
 function QuickQuoteForm(props) {
   return (
     <form id="details" onSubmit={props.getQuote}>
-      {/* Div to gather user first and last name */}
+      {/* Div to gather user first and last name
+      First and last name fields input not handled yet. 
+      Can be done on the same process as for Currency done.
+      (Not required right now for the functionality given) */}
       <div id="user-details">
         <div id="name">
           <label>
@@ -42,6 +45,8 @@ function QuickQuoteForm(props) {
         <label>
           Telephone/Mobile
           <br />
+          {/* Phone Input API used to create phone country codes.
+          Can also be given without it by using select and input in flex. */}
           <PhoneInput
             name="contact"
             value={props.contactNumber}
@@ -63,6 +68,8 @@ function QuickQuoteForm(props) {
             name="from-currency"
             required
           >
+            {/* More options for the currency can be added or 
+            API can be used to ease the task as used above for PhoneInput */}
             <option value="">Please select</option>
             <option value="USD">United States Dollar(USD)</option>
             <option value="AUD">Australian Dollar(AUD)</option>
