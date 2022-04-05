@@ -1,122 +1,66 @@
 import React, { useState } from "react";
-import "react-phone-number-input/style.css";
-import PhoneInput from "react-phone-number-input";
-import DataAccess from "./dataAccess";
-import Output from "./quickQuoteOutput";
+import QuickQuoteOutput from "./quickQuoteOutput";
+import QuickQuoteForm from "./quickQuoteForm";
+
+async function getConversionRate(fromCurrency, toCurrency, amount) {
+  const link = `https://api.ofx.com/PublicSite.ApiService/OFX/spotrate/Individual/${fromCurrency}/${toCurrency}/${amount}?format=json`;
+
+  const response = await fetch(link);
+  const data = await response.json();
+  return data.CustomerRate;
+}
 
 function QuickQuote() {
-  const [value, setValue] = useState();
-  const [senderCurrency, setSenderCurrency] = useState("");
-  const [receiverCurrency, setReceiverCurrency] = useState("");
-  const [senderAmount, setSenderAmount] = useState("");
+  const [customerRate, setCustomerRate] = useState(0);
+  const [contactNumber, setContactNumber] = useState();
+  const [fromCurrency, setFromCurrency] = useState("");
+  const [toCurrency, setToCurrency] = useState("");
+  const [amount, setAmount] = useState("");
 
-  const submit = (e) => {
+  const getQuote = async (e) => {
+    e.preventDefault();
+    const customerRate = await getConversionRate(
+      fromCurrency,
+      toCurrency,
+      amount
+    );
+    setCustomerRate(customerRate);
+  };
+
+  const newQuote = (e) => {
     e.preventDefault();
 
-    <Output
-      senderCur={senderCurrency}
-      receiverCur={receiverCurrency}
-      senderAmt={senderAmount}
-    />;
-    setValue();
-    setSenderCurrency("");
-    setReceiverCurrency("");
-    setSenderAmount("");
+    setCustomerRate(0);
+    setContactNumber();
+    setFromCurrency("");
+    setToCurrency("");
+    setAmount("");
   };
+
   return (
     <>
-      {/* <DataAccess /> */}
-      <form id="details" onSubmit={submit}>
-        <div id="user-details">
-          <div id="name">
-            <label>
-              First Name
-              <span className="required"> *</span>
-              <br />
-              <input
-                type="text"
-                name="first-name"
-                required
-                placeholder="First Name"
-              />
-            </label>
-            <label>
-              Last Name
-              <span className="required"> *</span>
-              <br />
-              <input
-                type="text"
-                name="last-name"
-                required
-                placeholder="Last Name"
-              />
-            </label>
-          </div>
-          <label>
-            Email
-            <br />
-            <input type="email" name="email" placeholder="Email" />
-          </label>
-          <label>
-            Telephone/Mobile
-            <br />
-            <PhoneInput name="contact" value={value} onChange={setValue} />
-          </label>
-        </div>
-        <div id="currency-details">
-          <label htmlFor="from-currency">
-            From Currency
-            <span className="required"> *</span>
-            <br />
-            <select
-              value={senderCurrency}
-              onChange={(e) => setSenderCurrency(e.target.value)}
-              id="from-currency"
-              name="from-currency"
-              required
-            >
-              <option value="">Please select</option>
-              <option value="USD">United States Dollar(USD)</option>
-              <option value="AUD">Australian Dollar(AUD)</option>
-            </select>
-          </label>
-          <label htmlFor="to-currency">
-            To Currency
-            <span className="required"> *</span>
-            <br />
-            <select
-              value={receiverCurrency}
-              onChange={(e) => setReceiverCurrency(e.target.value)}
-              id="to-currency"
-              name="to-currency"
-              required
-            >
-              <option value="">Please select</option>
-              <option value="USD">United States Dollar(USD)</option>
-              <option value="AUD">Australian Dollar(AUD)</option>
-            </select>
-          </label>
-          <label>
-            Amount
-            <span className="required"> *</span>
-            <br />
-            <input
-              value={senderAmount}
-              onChange={(e) => setSenderAmount(e.target.value)}
-              type="number"
-              step="0.01"
-              name="Amount"
-              required
-              placeholder="25000.00"
-            />
-          </label>
-        </div>
-        <div id="submission-button">
-          <button type="submit" id="submission">
-            GET QUOTE
-          </button>
-        </div>
-      </form>
+      {customerRate && amount ? (
+        <QuickQuoteOutput
+          customerRate={customerRate}
+          amount={amount}
+          fromCurrency={fromCurrency}
+          toCurrency={toCurrency}
+          convertedAmount={amount * customerRate}
+          newQuote={newQuote}
+        />
+      ) : (
+        <QuickQuoteForm
+          amount={amount}
+          setAmount={setAmount}
+          fromCurrency={fromCurrency}
+          setFromCurrency={setFromCurrency}
+          toCurrency={toCurrency}
+          setToCurrency={setToCurrency}
+          contactNumber={contactNumber}
+          setContactNumber={setContactNumber}
+          getQuote={getQuote}
+        />
+      )}
     </>
   );
 }

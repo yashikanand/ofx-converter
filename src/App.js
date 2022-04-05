@@ -1,6 +1,6 @@
 import "./App.css";
 import React from "react";
-import QuickQuote from "./Components/quickQuote";
+import QuickQuote from "./components/quickQuote";
 
 function Heading() {
   return (
