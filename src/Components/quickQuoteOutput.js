@@ -1,3 +1,4 @@
+/* Function to show the output on submitting the form for the quote */
 function QuickQuoteOutput(props) {
   return (
     <div id="output">
@@ -24,4 +25,5 @@ function QuickQuoteOutput(props) {
   );
 }
 
+/* Exporting the function to use in another script */
 export default QuickQuoteOutput;

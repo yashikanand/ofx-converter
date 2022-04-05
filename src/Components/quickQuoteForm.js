@@ -1,9 +1,12 @@
+/* Importing the required libraries for the functionality of the code */
 import "react-phone-number-input/style.css";
 import PhoneInput from "react-phone-number-input";
 
+/* Function to return form for collecting the user details and calculating the quote for the conversion. */
 function QuickQuoteForm(props) {
   return (
-    <form id="details">
+    <form id="details" onSubmit={props.getQuote}>
+      {/* Div to gather user first and last name */}
       <div id="user-details">
         <div id="name">
           <label>
@@ -30,6 +33,7 @@ function QuickQuoteForm(props) {
           </label>
         </div>
 
+        {/* Labels to gather user contact details */}
         <label>
           Email
           <br />
@@ -45,6 +49,8 @@ function QuickQuoteForm(props) {
           />
         </label>
       </div>
+
+      {/* Div to gather currency details */}
       <div id="currency-details">
         <label htmlFor="from-currency">
           From Currency
@@ -93,8 +99,9 @@ function QuickQuoteForm(props) {
           />
         </label>
       </div>
+      {/* Div to add button for submission of the form */}
       <div id="submission-button">
-        <button type="button" id="submission" onClick={props.getQuote}>
+        <button type="submit" id="submission">
           GET QUOTE
         </button>
       </div>
@@ -102,4 +109,5 @@ function QuickQuoteForm(props) {
   );
 }
 
+/* Exporting the function to use in another script */
 export default QuickQuoteForm;
