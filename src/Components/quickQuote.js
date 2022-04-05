@@ -35,14 +35,16 @@ function QuickQuote() {
       toCurrency,
       amount
     );
-    setCustomerRate(customerRate);
+    /* Handling error if the API doesn't give result back */
+    customerRate
+      ? setCustomerRate(customerRate)
+      : alert("Error in getting Customer Rate");
   };
 
   /* A function to handle the state when the new quote button is clicked.
     Sets all the values to the initial state. */
   const newQuote = (e) => {
     e.preventDefault();
-
     setCustomerRate(0);
     setContactNumber();
     setFromCurrency("");
